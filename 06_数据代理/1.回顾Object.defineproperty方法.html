@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回顾Object.defineproperty方法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+ 
+     -->
+
+    <!-- 准备好一个容器 -->
+    <!-- 一个容器只能被一个Vue实例接管 -->
+    <div id="root">
+        <h1>Hello，{{name}}</h1>
+    </div>
+    <script>
+        // Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+
+        // // 创建Vue实例
+        // new Vue({ // 配置对象
+        //     el: '#root',
+        //     data: {
+        //         name: '尚硅谷'
+        //     }
+        // })
+
+        let number = 18
+
+        let person = {
+            name: '张三',
+            sex: '男'
+        }
+
+        Object.defineProperty(person, 'age', {
+            // value: number,
+            // enumerable: true,  // 控制属性是否可以枚举，默认值是false
+            // writable: true,  //控制属性是否可以被修改，默认是fasle
+            // configurable:true //控制属性是否可以被删除，默认值是false
+
+            // 当有人读取person的age属性时，get函数(getter)就会被调用，且返回值就是age的值
+
+            get(){
+                console.log('有人读取了age属性');
+                return number 
+            },
+
+            // 当有人修改person的age属性时，get函数(getter)就会被调用，且会修改的具体的值
+
+            set(value){
+                console.log('有人修改了age属性，且值是',value);
+                number = value
+            }
+        })
+
+        // 这样写这个age属性不参与枚举（遍历） (在enumerate为false的情况下)
+        console.log(person);
+    </script>
+</body>
+
+</html>
