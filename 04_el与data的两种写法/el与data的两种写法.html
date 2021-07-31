@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        data与e1的2种写法
+            1.e1有2种写法
+                (1) . new Vue时候配置e1属性。
+                (2).先创建Vue实例，随后再通过vm. $mount( ' #root ' )指定el的值。
+            2. data有2种写法
+                (1).对象式
+                (2).函数式
+                如何选择:目前哪种写法都可以，以后学习到组件时，data必 须使用函数式，否则会报错。
+            3.一个 重要的原则:
+                由Vue管理的函数，一定不要写箭头函数，一且写了简头函数，this就不再是Vue实例了。
+     -->
+
+    <!-- 准备好一个容器 -->
+    <!-- 一个容器只能被一个Vue实例接管 -->
+    <div id="root">
+        <h1>Hello，{{name}}</h1>
+    </div>
+    <script>
+        Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+
+
+        // el的两种写法
+        // 创建Vue实例
+        // const v = new Vue({ // 配置对象
+        //     // el: '#root',
+        //     data: {
+        //         name: '尚硅谷'
+        //     }
+        // })
+        // console.log(v);
+
+        // setTimeout(()=>{
+        //     v.$mount('#root')
+        // },3000)
+
+        // data的两种写法
+
+        new Vue({
+            el: '#root',
+            // data的第一种写法：对象式
+            /* data:{
+                name:'尚硅谷'
+            }
+            */
+
+            // data的第二种写法:函数式
+            data() {
+                console.log('this:',this);// 此处的this是Vue实例对象
+                return {
+                    name: '尚硅谷'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
