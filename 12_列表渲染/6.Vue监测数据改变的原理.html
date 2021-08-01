@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        
+     -->
+
+    <!-- 准备好一个容器 -->
+    <!-- 一个容器只能被一个Vue实例接管 -->
+    <div id="root">
+        <h1>Hello，{{name}}</h1>
+        <h2>学校地址：{{address}}</h2>
+    </div>
+    <script>
+        Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+
+
+        // 用computed实现
+        const vm = new Vue({ // 配置对象
+            el: '#root',
+            data: {
+                name: '尚硅谷',
+                address: '北京'
+            } 
+        })
+
+    </script>
+</body>
+
+</html>
