@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        
+     -->
+
+    <!-- 准备好一个容器 -->
+    <!-- 一个容器只能被一个Vue实例接管 -->
+    <div id="root">
+        <h1>学校信息：</h1>
+        <h1>Hello，{{name}}</h1>
+        <h2>学校地址：{{address}}</h2>
+        <hr>
+        <h1>学生信息：</h1>
+        <button @click='addSex'>点我添加一个性别属性，默认值是男</button>
+        <h2>学生姓名：{{student.name}}</h2>
+        <h2 v-if="student.sex">学生性别：{{student.sex}}</h2>
+        <h2>学生年龄：{{student.age.rAge}}，对外：{{student.age.sAge}}</h2>
+        <h2>朋友们：</h2>
+        <ul>
+            <li v-for="(f,index) in student.friends" :key="index">
+                {{f.name}} -- {{f.age}}
+            </li>
+        </ul>
+
+        <h2>爱好：</h2>
+        <ul>
+            <li v-for="(h,index) in student.hobby" :key="index">
+                {{h}} -- {{index}}
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+
+
+        // 用computed实现
+        const vm = new Vue({ // 配置对象
+            el: '#root',
+            data: {
+                name: '尚硅谷',
+                address: '北京',
+                student: {
+                    name: 'tom',
+                    age: {
+                        rAge: 25,
+                        sAge: 20
+                    },
+                    hobby: ['抽烟', '喝酒', '烫头'],
+                    friends: [
+                        { name: 'jerry', age: 35 },
+                        { name: 'tony', age: 36 }
+                    ]
+                }
+            },
+            methods: {
+                addSex() {
+                    // Vue.set(this.student, 'sex', '男')
+                    this.$set(this.student, 'sex', '男')
+                }
+            },
+        })
+
+    </script>
+</body>
+
+</html>
