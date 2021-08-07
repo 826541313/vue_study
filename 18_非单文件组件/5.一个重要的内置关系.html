@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        1.一个重要的内置关系: VueComponent.prototype.__proto__ === Vue.prototype
+        2.为什么要有这个关系：让组件实例对象(vc) 可以访问到Vue原型上的属性、方法。
+
+     -->
+
+    <!-- 准备好一个容器 -->
+    <!-- 一个容器只能被一个Vue实例接管 -->
+    <div id="root">
+        <h1>Hello，{{name}}</h1>
+        <school></school>
+    </div>
+    <script>
+        Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+
+        // 定义school组件
+        const school = Vue.extend({
+            // el: '#root', // 组件定义时，一定不要写el配置项，因为最终所有的组件都要被个vm管理， 由vm决定服务于哪个容器。
+            template: `
+                <div>
+                    <h2>学校姓名: {{name}}</h2>
+                    <h2>学校地址: {{address}}</h2> 
+                    <button @click="showName">点我提示学校名</button>
+                </div>
+            `,
+            data() {
+                return {
+                    name: '尚硅谷',
+                    address: '北京昌平'
+                }
+            },
+            methods: {
+                showName() {
+                    alert(this.name)
+                }
+            }
+        })
+
+
+        // 创建Vue实例
+        new Vue({ // 配置对象
+            el: '#root',
+            data: {
+                name: '尚硅谷'
+            },
+            components: {
+                school
+            }
+        })
+
+        function Demo() {
+            this.a = 1
+            this.b = 2
+        }
+
+        // 创建一个Demo的实例对象
+        const d = new Demo()
+
+        console.log(Demo.prototype); // 显示原型属性
+        console.log(d.__proto__); // 隐式原型属性
+
+        // 程序员通过显示原型属性操作原型对象，追加一个x属性,值为99
+        Demo.prototype.x = 99
+
+        console.log(d.__proto__.x);
+
+        console.log(school.prototype.__proto__ === Vue.prototype);
+    </script>
+</body>
+
+</html>
