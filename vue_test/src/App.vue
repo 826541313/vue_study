@@ -1,8 +1,7 @@
 <template>
   <div>
-    <img src="./assets/logo.png" alt="logo" />
-    <School></School>
-    <Student></Student>
+    <School />
+    <Student name="李四" sex="男" :age="18" />
   </div>
 </template>
 
