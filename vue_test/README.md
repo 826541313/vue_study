@@ -39,28 +39,22 @@
                 (1).全局混入: Vue.mixin(xx)
                 (2).局部混入: mixins:['xxx']
 
+## 插件
+        功能:用于增强Vue
+        本质:包含install方法的一个对象，instal1的第个 参数是Vue, 第二个以后的参数是插件使用者传递的数据。
+        定义插件:
+            对象.install = function (Vue, options) {
+                //1.添加全局过滤器
+                Vue.filter(....)
 
-# vue_test
+                // 2.添加全局指令
+                Vue.directive(....)
 
-## Project setup
-```
-npm install
-```
+                // 3.配置全局混入(合)
+                Vue.mixin(....)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+                // 4.添加实例方法
+                Vue.prototype.$myMethod = function () {...}
+                Vue.prototype.$myProperty = xxx
+            }
+        使用插件: Vue.use()
