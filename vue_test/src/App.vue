@@ -8,8 +8,8 @@
 
 <script>
 // 引入组件
-import School from "./components/School.Vue";
-import Student from "./components/Student.Vue";
+import School from "./components/School.vue";
+import Student from "./components/Student.vue";
 
 export default {
   name: "App",
