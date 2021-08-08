@@ -1,20 +1,91 @@
 <template>
-  <div>
-    <School />
-    <Student name="李四" sex="男" :age="18" />
+  <div id="root">
+    <div class="todo-container">
+      <div class="todo-wrap">
+        <MyHeader :addtodo="addtodo" />
+        <MyList :todos="todos" />
+        <MyFooter
+          :length="todos.length"
+          :donelength="todos.filter((item) => item.done === true).length"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // 引入组件
-import School from "./components/School.vue";
-import Student from "./components/Student.vue";
+import MyHeader from "./components/MyHeader.vue";
+import MyList from "./components/MyList.vue";
+import MyFooter from "./components/MyFooter.vue";
 
 export default {
   name: "App",
   components: {
-    School,
-    Student,
+    MyHeader,
+    MyFooter,
+    MyList,
+  },
+  data() {
+    return {
+      todos: [
+        { id: "001", title: "抽烟", done: true },
+        { id: "002", title: "喝酒", done: false },
+        { id: "003", title: "开车", done: true },
+      ],
+    };
+  },
+  methods: {
+    addtodo(todo) {
+      console.log("我是App组件，我收到了数据：", todo);
+      this.todos.unshift(todo);
+    },
   },
 };
 </script>
+
+<style>
+/*base*/
+body {
+  background: #fff;
+}
+
+.btn {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #da4f49;
+  border: 1px solid #bd362f;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #bd362f;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.todo-container {
+  width: 600px;
+  margin: 0 auto;
+}
+.todo-container .todo-wrap {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+</style>
