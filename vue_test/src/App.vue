@@ -3,10 +3,16 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader :addtodo="addtodo" />
-        <MyList :todos="todos" />
+        <MyList
+          :todos="todos"
+          :checkTodo="checkTodo"
+          :deleteTodo="deleteTodo"
+        />
         <MyFooter
-          :length="todos.length"
-          :donelength="todos.filter((item) => item.done === true).length"
+          :doneLength="doneLength"
+          :length="length"
+          :checkAllTodo="checkAllTodo"
+          :clearAllTodo="clearAllTodo"
         />
       </div>
     </div>
@@ -35,10 +41,45 @@ export default {
       ],
     };
   },
+
+  computed: {
+    doneLength() {
+      return this.todos.reduce((pre, todo) => pre + (todo.done ? 1 : 0), 0);
+    },
+    length() {
+      return this.todos.length;
+    },
+    isAll() {
+      return this.doneLength === this.length && this.length > 0;
+    },
+  },
+
   methods: {
+    // 添加一个todo
     addtodo(todo) {
       console.log("我是App组件，我收到了数据：", todo);
       this.todos.unshift(todo);
+    },
+
+    // 勾选or取消勾选一个todo
+    checkTodo(id) {
+      this.todos.forEach((todo) => {
+        if (todo.id === id) todo.done = !todo.done;
+      });
+    },
+
+    deleteTodo(id) {
+      this.todos = this.todos.filter((todo) => todo.id !== id);
+    },
+
+    checkAllTodo(done) {
+      this.todos.forEach((todo) => {
+        todo.done = done;
+      });
+    },
+
+    clearAllTodo() {
+      this.todos = this.todos.filter((todo) => !todo.done);
     },
   },
 };
