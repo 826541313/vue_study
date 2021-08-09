@@ -84,7 +84,7 @@ export default {
   },
 
   mounted() {
-    this.$bus.$on("cbeckTodo", this.checkTodo);
+    this.$bus.$on("checkTodo", this.checkTodo);
     this.$bus.$on("deleteTodo", this.deleteTodo);
   },
   beforeDestroy() {
