@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import vueResource from 'vue-resource'
+
 
 Vue.config.productionTip = false
 
 // 应用插件
-
+Vue.use(vueResource)
 /*
   关于不同版本的Vue: 
     1.vue.js与vue.runtime.xxx.js的区别:
