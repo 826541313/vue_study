@@ -1,22 +1,25 @@
 <template>
-  <div id="app">
-    <div class="container">
-      <Search />
-      <List />
-    </div>
+  <div>
+    <Count />
   </div>
 </template>
 
 <script>
-import Search from "./components/Search.vue";
-import List from "./components/List.vue";
 // 引入组件
+
+import Count from "./components/Count.vue";
 
 export default {
   name: "App",
   components: {
-    Search,
-    List,
+    Count,
   },
 };
 </script>
+
+<style>
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+</style>

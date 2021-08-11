@@ -3,11 +3,14 @@ import App from './App.vue'
 
 import vueResource from 'vue-resource'
 
+import store from './store'
+
 
 Vue.config.productionTip = false
 
 // 应用插件
 Vue.use(vueResource)
+
 /*
   关于不同版本的Vue: 
     1.vue.js与vue.runtime.xxx.js的区别:
@@ -21,6 +24,7 @@ Vue.use(vueResource)
 
 new Vue({
   render: h => h(App),
+  store,
   beforeCreate() {
     Vue.prototype.$bus = this
   }

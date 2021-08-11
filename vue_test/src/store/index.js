@@ -33,11 +33,18 @@ const mutations = {
     }
 }
 
-
 // 准备state——用于存储数据
 const state = {
-    sum: 0
+    sum: 0,
+    school: '尚硅谷',
+    subject: '前端'
+}
+
+const getters = {
+    bigSum(state) {
+        return state.sum * 10
+    }
 }
 
 // 创建store
-export default new Vuex.Store({ actions, mutations, state })
+export default new Vuex.Store({ actions, mutations, state, getters })
