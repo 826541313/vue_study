@@ -1,15 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VueRouter from 'vue-router'
 
-import vueResource from 'vue-resource'
-
-import store from './store'
-
-
+import router from './router'
 Vue.config.productionTip = false
 
 // 应用插件
-Vue.use(vueResource)
+Vue.use(VueRouter)
 
 /*
   关于不同版本的Vue: 
@@ -24,8 +21,5 @@ Vue.use(vueResource)
 
 new Vue({
   render: h => h(App),
-  store,
-  beforeCreate() {
-    Vue.prototype.$bus = this
-  }
+  router
 }).$mount('#app')
