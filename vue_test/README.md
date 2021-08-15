@@ -629,3 +629,39 @@
             $route.params.id
             $route.params.title
 
+    9.编程式路由导航.
+        1.作用:不借助<router- link>实现路由跳转,让路由跳转更加灵活
+        2.具体编码:
+            //$router的两个API
+            this. $router. push({
+                name:' xiangqing' ,
+                params:{
+                    id:xxx,
+                    title:xxx 
+                }
+            })
+            this . $router.replace({
+                name:' xiangqing' ,
+                params:{
+                    id:xxx,
+                    title:xxx
+                }
+            })
+            this.$router.forward( )
+            this.$router.back( )
+            this.$router.go(3)
+    10.缓存路由组件
+        1.作用:让不展示的路由组件保持挂载,不被销毁。
+        2.具体编码:
+            <keep-alive include="News">
+                <router-view></router-view>
+            </keep-alive>
+
+    11.两个新的生命周期钩子
+        1.作用:路由组件所独有的两个钩子，用于捕获路由组件的激活状态。
+        2.具体名字:
+           1. activated路由组件被激活时触发。
+           2. deactivated 路由组件失活时触发。
+
+
+
