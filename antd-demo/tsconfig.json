@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "importHelpers": true,   // 从 tslib 导入辅助工具函数
+    "moduleResolution": "node",
+    "allowJs": true,
+    "noImplicitAny": true,    // 在表达式和声明上有隐含的 any类型时报错
+    "noImplicitThis": true,    // 当 this表达式的值为 any类型的时候，生成一个错误
+    "noUnusedLocals":true,    // 若有未使用的局部变量则抛错
+    "noUnusedParameters":true,    // 若有未使用的参数则抛错
+    "experimentalDecorators": true,   // 启用实验性的ES装饰器
+    "extendedDiagnostics": false,    // 显示详细的诊段信息
+    "skipLibCheck": true,   // 忽略所有的声明文件（ *.d.ts）的类型检查
+    "esModuleInterop": true,    
+    "allowSyntheticDefaultImports": true,    // 允许从没有设置默认导出的模块中默认导入
+    "suppressImplicitAnyIndexErrors":true,    // 阻止 --noImplicitAny对缺少索引签名的索引对象报错
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "webpack-env"
+    ],
+    // "paths": {
+    //   "@/*": [
+    //     "src/*"
+    //   ]
+    // },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": [
+    "src/**/*",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
