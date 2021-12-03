@@ -5,6 +5,17 @@ module.exports = {
     // }
 
     // 开启代理服务器（方式二）
+    configureWebpack: {
+        module: {
+            rules: [
+                {
+                    test: /\.mjs$/,
+                    include: /node_modules/,
+                    type: "javascript/auto"
+                },
+            ],
+        },
+    },
     devServer: {
         proxy: {
             '/api': {
